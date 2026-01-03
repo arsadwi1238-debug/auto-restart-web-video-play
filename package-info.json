@@ -1,0 +1,69 @@
+{
+  "name": "Website Auto Restart Monitor - Example Deployment",
+  "version": "2.0.0",
+  "description": "gtw juga sih buat apa",
+  "author": "kata arsa sih orang",
+  "license": "g tau tanya sama copilot github",
+  "keywords": [
+    "auto-restart",
+    "video-monitoring",
+    "web-automation",
+    "video-player"
+  ],
+  "deploymentNotes": {
+    "python": {
+      "setup": "cd python-version && .\\setup.bat && python app.py",
+      "build": "cd python-version && python build_exe.py",
+      "output": "python-version/dist/WebsiteAutoRestart.exe"
+    },
+    "nodejs": {
+      "setup": "cd nodejs-version && .\\setup.bat && npm start",
+      "build": "cd nodejs-version && npm run build-exe",
+      "output": "nodejs-version/WebsiteAutoRestart.exe"
+    },
+    "requirements": [
+      "Google Chrome installed on system",
+      "Internet connection to access websites",
+      "Folder permissions for creating logs/"
+    ]
+  },
+  "configExample": {
+    "singleWebsite": {
+      "websites": [
+        {
+          "name": "My Video Stream",
+          "url": "http://localhost:3000",
+          "videoSelector": "video",
+          "enabled": true,
+          "timeout": 20
+        }
+      ],
+      "headless": false
+    },
+    "multipleWebsites": {
+      "websites": [
+        {
+          "name": "Public Website",
+          "url": "https://example.com/player",
+          "videoSelector": "video",
+          "enabled": true,
+          "timeout": 20
+        },
+        {
+          "name": "Private Network",
+          "url": "http://192.168.1.100:8080",
+          "videoSelector": ".player video",
+          "enabled": true,
+          "timeout": 25
+        }
+      ]
+    }
+  },
+  "supportedVideoSelectors": [
+    "video",
+    ".player video",
+    "#main-video",
+    "video[data-player='main']",
+    "div.video-container > video"
+  ]
+}
